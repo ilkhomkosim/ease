@@ -1,0 +1,1 @@
+export const MORGAN_RORMAT = `:method :url :response-time [:status] \n`
