@@ -17,7 +17,7 @@ routerAdmin.get('/check-me', shopController.checkAuthSession);
 routerAdmin.get('/logout', shopController.logout);
 
 // Product
-routerAdmin.get('/product/all', productController.getAllProducts);
+routerAdmin.get('/product/all', shopController.verifyShop, productController.getAllProducts);
 routerAdmin.post('/product/create', productController.createNewProduct);
 routerAdmin.post('/product/:id', productController.updateChosenProduct);
 
