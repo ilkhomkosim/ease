@@ -20,13 +20,25 @@ routerAdmin.get('/check-me', shopController.checkAuthSession);
 routerAdmin.get('/logout', shopController.logout);
 
 // Product
-routerAdmin.get('/product/all', shopController.verifyShop, productController.getAllProducts);
-routerAdmin.post('/product/create', 
+
+routerAdmin.get(
+        '/product/all', 
         shopController.verifyShop, 
-        // uploadProductImage.single('productImage'),
+        productController.getAllProducts
+);
+
+routerAdmin.post(
+        '/product/create', 
+        shopController.verifyShop, 
         makeUploader("products").array("productImages", 5),
-        productController.createNewProduct);
-routerAdmin.post('/product/:id', shopController.verifyShop, productController.updateChosenProduct);
+        productController.createNewProduct
+);
+
+routerAdmin.post(
+        '/product/:id', 
+        shopController.verifyShop, 
+        productController.updateChosenProduct
+);
 
 // User
 

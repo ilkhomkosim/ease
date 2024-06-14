@@ -22,16 +22,16 @@ export enum ProductVolume {
 }
 
 export enum ProductCollection{
-    BAD = "BAD",
-    CHAIR = "CHAIR",
+    BEDS = "BEDS",
+    CHAIRS = "CHAIR",
     DESKS = "DESKS",
-    DRESSER = "DRESSER",
-    COUCH = "COUCH",
+    DRESSERS = "DRESSERS",
+    COUCHES = "COUCHES",
     NIGHTSTANDS = "NIGHTSTANDS",
-    OTTOMAN = "OTTOMAN",
-    BOOKCASE = "BOOKCASE",
+    OTTOMANS = "OTTOMANS",
+    BOOKCASES = "BOOKCASES",
     CLOCKS = "CLOCKS",
-    RUSTIC = "RUSTIC",
+    RUSTICS = "RUSTICS",
     DININGTABLES = "DININGTABLES",
     TABLES = "TABLES",
     OTHERS = "OTHERS"

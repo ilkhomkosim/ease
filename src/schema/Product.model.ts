@@ -26,9 +26,9 @@ const productSchema = new Schema(
             required: true,
         },
 
-        productCount: {
+        productLeftCount: {
             type: Number,
-            required: true,
+            required:true
         },
 
         productSize: {
@@ -38,7 +38,7 @@ const productSchema = new Schema(
         },
 
         productVolume: {
-            type: String,
+            type: Number,
             enum: ProductVolume,
             default: ProductVolume.ONE,
         }, 
