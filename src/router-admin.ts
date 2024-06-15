@@ -41,5 +41,6 @@ routerAdmin.post(
 );
 
 // User
+routerAdmin.get("/user/all", shopController.verifyShop, shopController.getUsers)
 
 export default routerAdmin;
