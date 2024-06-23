@@ -38,7 +38,7 @@ shopController.getLogin = (req: Request, res: Response) =>{
     }
 }
 
-shopController.processSignup = async (req: AdminRequest, res: Response) =>{
+shopController.processSignup = async (req: AdminRequest, res: Response) => {
     try{
         console.log("processSignup");
         const file = req.file;
@@ -52,28 +52,52 @@ shopController.processSignup = async (req: AdminRequest, res: Response) =>{
         req.session.member = result;
         req.session.save(function() {
             res.redirect("/admin/product/all");
-        })
+        });
     } catch (err) {
         console.log("Error, processSignup:", err);
-        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"): window.location.replace('admin/signup') </script>`);    }
+        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+        res.send(`<script> alert("${message}"): window.location.replace('/admin/signup') </script>`);    }
 };
 
-shopController.processLogin = async (req: AdminRequest, res: Response) =>{
+// shopController.processLogin = async (req: AdminRequest, res: Response) =>{
+//     try{
+//         console.log("processLogin");
+        
+//         const input: LoginInput = req.body;
+//         const result = await memberService.processLogin(input);
+
+//                 req.session.member = result;
+//                 req.session.save(function() {
+//                     res.redirect("/admin/product/all");
+//                 })
+//     } catch (err) {
+//         console.log("Error, processLogin:", err);
+//         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
+//         res.send(`<script> alert("${message}"): window.location.replace('/admin/login') </script>`);
+//     }
+// };
+
+shopController.processLogin = async (
+    req:AdminRequest, 
+    res:Response
+    ) => {
     try{
         console.log("processLogin");
-        
+
         const input: LoginInput = req.body;
         const result = await memberService.processLogin(input);
 
-                req.session.member = result;
-                req.session.save(function() {
-                    res.redirect("/admin/product/all");
-                })
+        req.session.member = result;
+        req.session.save(function () {
+        res.redirect("/admin/product/all");
+        });
     } catch (err) {
         console.log("Error, processLogin:", err);
-        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-        res.send(`<script> alert("${message}"): window.location.replace('admin/login') </script>`);
+        const message = 
+        err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+        res.send(
+            `<script> alert(" ${message}"); window.location.replace('/admin/login') </script>`
+        );
     }
 };
 
