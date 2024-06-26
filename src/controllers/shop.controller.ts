@@ -40,6 +40,7 @@ shopController.getLogin = (req: Request, res: Response) =>{
 
 shopController.processSignup = async (req: AdminRequest, res: Response) => {
     try{
+        console.log('req.body:', req.body);
         console.log("processSignup");
         const file = req.file;
         if(!file) throw new Errors(HttpCode.BAD_REQUEST, Message.SOMETHING_WENT_WRONG);
@@ -55,27 +56,13 @@ shopController.processSignup = async (req: AdminRequest, res: Response) => {
         });
     } catch (err) {
         console.log("Error, processSignup:", err);
-        const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
-        res.send(`<script> alert("${message}"): window.location.replace('/admin/signup') </script>`);    }
+        const message = 
+        err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG;
+        res.send(
+            `<script> alert(" ${message}"); window.location.replace('/admin/signup') </script>`
+        );
+    }
 };
-
-// shopController.processLogin = async (req: AdminRequest, res: Response) =>{
-//     try{
-//         console.log("processLogin");
-        
-//         const input: LoginInput = req.body;
-//         const result = await memberService.processLogin(input);
-
-//                 req.session.member = result;
-//                 req.session.save(function() {
-//                     res.redirect("/admin/product/all");
-//                 })
-//     } catch (err) {
-//         console.log("Error, processLogin:", err);
-//         const message = err instanceof Errors ? err.message : Message.SOMETHING_WENT_WRONG
-//         res.send(`<script> alert("${message}"): window.location.replace('/admin/login') </script>`);
-//     }
-// };
 
 shopController.processLogin = async (
     req:AdminRequest, 
