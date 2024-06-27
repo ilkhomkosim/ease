@@ -74,7 +74,9 @@
             </button>
           </div>
         </div>
+
         <form
+        onsubmit="return validateForm()"
           action="/admin/product/create"
           method="POST"
           class="dish-container"
@@ -124,16 +126,24 @@
             <div class="half-input">
               <label>Product Type</label>
               <select class="product-collection" name="productCollection">
-                <option value="DISH" selected>Dish</option>
-                <option value="SALAD">Salad</option>
-                <option value="DESSERT">Dessert</option>
-                <option value="DRINK">Drink</option>
-                <option value="OTHER">Other</option>
+                <option value="BEDS" selected>Beds</option>
+                <option value="CHAIRS">Chairs</option>
+                <option value="DESKS">Desks</option>
+                <option value="DRESSERS">Dressers</option>
+                <option value="COUCHES">Couches</option>
+                <option value="NIGHTSTANDS">Nightstands</option>
+                <option value="OTTOMANS">Otoomans</option>
+                <option value="BOOKCASES">Bookcases</option>
+                <option value="CLOCKS">Clocks</option>
+                <option value="RUSTICS">Rustics</option>
+                <option value="DININGTABLES">Dining-tables</option>
+                <option value="TABLES">Tables</option>
+                <option value="OTHER">Others</option>
               </select>
             </div>
 
             <div class="half-input" id="product-collection">
-              <label>Dish Volume</label>
+              <label>Product size</label>
               <select class="product-size" name="productSize">
                 <option value="SMALL">Small</option>
                 <option value="NORMAL" selected>Normal</option>
@@ -143,13 +153,15 @@
             </div>
 
             <div class="half-input" id="product-volume" style="display: none">
-              <label>Drink Volume</label>
+              <label>Product number fot set</label>
               <select class="product-volume" name="productVolume">
-                <option value="0.5">0,5 liters</option>
-                <option value="1" selected>1 liters</option>
-                <option value="1.2">1,2 liters</option>
-                <option value="1.5">1,5 liters</option>
-                <option value="2">2 liters</option>
+                <option value="1" selected>1 </option>
+                <option value="2" >2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="Set">Set(6)</option>
+                <option value="Set">Set(12)</option>
               </select>
             </div>
           </div>
@@ -169,6 +181,7 @@
                   name="productImages"
                   class="image-one"
                   required
+                  onchange="previewFileHandler(this, 1)"
                 />
               </div>
               <div class="upload-img-box">
@@ -178,6 +191,7 @@
                   id="file"
                   name="productImages"
                   class="image-two"
+                  onchange="previewFileHandler(this, 2)"
                 />
               </div>
               <div class="upload-img-box">
@@ -187,6 +201,7 @@
                   id="file"
                   name="productImages"
                   class="image-three"
+                  onchange="previewFileHandler(this, 3)"
                 />
               </div>
               <div class="upload-img-box">
@@ -196,6 +211,7 @@
                   id="file"
                   name="productImages"
                   class="image-four"
+                  onchange="previewFileHandler(this, 4)"
                 />
               </div>
               <div class="upload-img-box">
@@ -205,6 +221,7 @@
                   id="file"
                   name="productImages"
                   class="image-five"
+                  onchange="previewFileHandler(this, 5)"
                 />
               </div>
               <input name="restaurantIid" class="restaurant-id" hidden />
