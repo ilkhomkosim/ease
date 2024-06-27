@@ -7,9 +7,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #442817;
+  background: #1c120c;
 
-  /* background: linear-gradient(-45deg, #110303bf, #e37813, #011c1aba, #968383); */
 }
 
 .users-container a {
@@ -18,7 +17,7 @@
 }
 
 .users-container .nav-item a {
-  color: #e3c08d;
+  color: #f5f2ec;
 }
 
 .users-container .nav-item a.disabled {
