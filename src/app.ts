@@ -3,11 +3,12 @@ import path from "path";
 import router from "./router";
 import routerAdmin from "./router-admin";
 import morgan from "morgan";
-import { MORGAN_RORMAT } from "./libs/config";
-
+import { MORGAN_FORMAT } from "./libs/config";
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
@@ -18,9 +19,12 @@ const store = new MongoDBStore({
 // 1- ENTRANCE
 const app = express();
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static("./uploads"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
-app.use(morgan(MORGAN_RORMAT))
+app.use(morgan(MORGAN_FORMAT));
+app.use(cors({credentials:true, origin: true}));
+app.use(cookieParser());
 
 // 2- SESSIONS
 app.use(

@@ -23,16 +23,13 @@ export enum ProductVolume {
 
 export enum ProductCollection{
     BEDS = "BEDS",
-    CHAIRS = "CHAIR",
+    CHAIRS = "CHAIRS",
     DESKS = "DESKS",
     DRESSERS = "DRESSERS",
     COUCHES = "COUCHES",
     NIGHTSTANDS = "NIGHTSTANDS",
-    OTTOMANS = "OTTOMANS",
     BOOKCASES = "BOOKCASES",
     CLOCKS = "CLOCKS",
-    RUSTICS = "RUSTICS",
-    DININGTABLES = "DININGTABLES",
     TABLES = "TABLES",
     OTHERS = "OTHERS"
 }

@@ -50,6 +50,6 @@ const memberSchema = new Schema({
         type: Number,
         default: 0,
     },
-}, {timestamps: true});  // createdAt, updatedAt
+}, {timestamps: true,});  // createdAt, updatedAt
 
 export default mongoose.model('Member', memberSchema);
