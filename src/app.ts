@@ -7,8 +7,11 @@ import { MORGAN_FORMAT } from "./libs/config";
 import session from "express-session";
 import ConnectMongoDB from "connect-mongodb-session";
 import { T } from "./libs/types/common";
+import {Server as SocketIOServer} from "socket.io";
+import http from "http";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
 
 const MongoDBStore = ConnectMongoDB(session);
 const store = new MongoDBStore({
@@ -49,7 +52,26 @@ app.set('views', path.join(__dirname, "views"));
 app.set("view engine", "ejs")
 
 // 4-ROUTERS
-app.use("/admin", routerAdmin);   // SSR
-app.use("/", router);             // SPA
+app.use("/admin", routerAdmin);  
+app.use("/", router);             
 
-export default app;
+const  server  = http.createServer(app)
+const io = new SocketIOServer(server, {
+    cors: {
+        origin: true,
+        credentials: true,
+    },
+})
+
+let summaryClient = 0;
+io.on("connection", (socket) => {
+    summaryClient++;
+    console.log(`Connection & total [${summaryClient}] `);
+    
+
+    socket.on("disconnect", () => {
+        summaryClient--;
+        console.log(`Disconnection & total [${summaryClient}]`);
+    });
+})
+export default server;
